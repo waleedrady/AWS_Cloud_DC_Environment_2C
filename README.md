@@ -1,5 +1,8 @@
 # DataCenter Enviroment 1
 
+Source Code for this Module (https://github.com/WEEMR/terraform-aws-DataCenter_Enviroment_2C)
+Terraform Registery         (https://registry.terraform.io/modules/WEEMR/DataCenter_Enviroment_2C/aws/latest)
+
 The module will create the below resources:
 
 
