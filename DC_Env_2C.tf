@@ -1,7 +1,7 @@
 module "DC_Enviroment_2C" {
 
   source  = "WEEMR/DataCenter_Enviroment_2C/aws"
-  version = "0.1.1"
+  version = "0.2.3"
 
   # ------------------------------------------------------ AWS Account Settings ------------------------------------------ #
 
@@ -16,7 +16,7 @@ module "DC_Enviroment_2C" {
 
   # ------------------------------------------------------  DNS ------------------------------------------------------------ #
 
-  Public_Hosted_Zone = "YOUR DOMAIN NAME"            # You must have a domain registerd with AWS Route53 or Managed by AWS with a Hosted Zone Created. i.e xyz.com
+  Public_Hosted_Zone = "fortinetpslab.com"            # You must have a domain registerd with AWS Route53 or Managed by AWS with a Hosted Zone Created. i.e xyz.com
   SubHosted_Zone     = "jdoe.fortinetpslab.com" # Creates a Public SubHosted zone  - Enter a sub-hosted name for the domain above. i.e lab.xyz.com
 
   # ------------------------------------------------------ Reference Module ------------------------------------------------ #
@@ -69,8 +69,8 @@ output "hub1_Windows_DNS_Name" {
   value = module.DC_Enviroment_2C.hub1_Windows_DNS_Name
 }
 
-output "hub1_Windows_Password" {
-  value = rsadecrypt(module.DC_Enviroment_2C.hub1_Windows_Password, file("./WRady_AWS_FTNT_Key.pem"))
+output "hub1_Windows_Password" {                                    # Your AWS KEY file below
+  value = rsadecrypt(module.DC_Enviroment_2C.hub1_Windows_Password, file("./AWS_Key.pem"))
 }
 
 # ---------------- ---------------- ---------------- spoke 1
@@ -94,7 +94,6 @@ output "spoke1_Linux_DNS_Name" {
 output "spoke1_Windows_DNS_Name" {
   value = module.DC_Enviroment_2C.spoke1_Windows_DNS_Name
 }
-
 
 
 output "spoke1_Windows_Password" {                                    # Your AWS KEY file below
